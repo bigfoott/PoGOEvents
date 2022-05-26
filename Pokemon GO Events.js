@@ -45,26 +45,23 @@ async function main()
     var topBar = widget.addStack();
     topBar.layoutHorizontally();
 
+    var title = topBar.addText("Pokémon GO Events");
+    title.textColor=new Color("#fff");
+
     if (size == "small")
     {
-        var title = topBar.addText("Pokémon GO Events");
-        title.textColor=new Color("#fff");
         title.font = Font.boldSystemFont(10);
 
-        widget.addSpacer(3 );
+        widget.addSpacer(5);
     }
     else if (size == "medium")
     {
-        var title = topBar.addText("Pokémon GO Events");
-        title.textColor=new Color("#fff");
         title.font = Font.boldSystemFont(12);
 
         widget.addSpacer(5);
     }
     else // large
     {
-        var title = topBar.addText("Pokémon GO Events");
-        title.textColor=new Color("#fff");
         title.font = Font.boldSystemFont(14);
 
         widget.addSpacer(6);
@@ -156,7 +153,7 @@ async function main()
 
             let name = event.addText(e.name)
             name.textColor = textMainColor;
-            name.font = Font.boldSystemFont(10);
+            name.font = Font.systemFont(10);
 
             event.addSpacer(null);
             
@@ -255,17 +252,5 @@ eventColor["update"] = new Color("#2980b9");
 eventColor["raid-weekend"] = new Color("#6f1e51");
 eventColor["potential-ultra-unlock"] = new Color("#2c3e50");
 eventColor["location-specific"] = new Color("#284b92");
-
-// https://talk.automators.fm/t/draw-line-on-widget/10079/2
-DrawContext.prototype.drawLine = function (p_x1, p_y1, p_x2, p_y2, p_colourLine, p_intWidth)
-{	
-	let pthLine = new Path();
-	pthLine.move(new Point(p_x1, p_y1));
-	pthLine.addLine(new Point(p_x2, p_y2));
-	this.addPath(pthLine);
-	this.setStrokeColor(p_colourLine);	
-	this.setLineWidth(p_intWidth);
-	this.strokePath();
-}
 
 main();
