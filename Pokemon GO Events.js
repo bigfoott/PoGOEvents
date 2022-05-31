@@ -30,9 +30,9 @@ async function main()
         options.category = "upcoming";
     }
 
-    var textMainColor = new Color("#d1d1d1");
-    var textAccentColor = new Color("#989899");
-    widget.backgroundColor = new Color("#212121");
+    var textMainColor = Color.dynamic(new Color("#000"), new Color("#d1d1d1"));
+    var textAccentColor = Color.dynamic(new Color("#595959"), new Color("#a6a6a6"));
+    widget.backgroundColor = Color.dynamic(new Color("#fff"), new Color("#212121"));
 
     var req = new Request("https://raw.githubusercontent.com/bigfoott/ScrapedDuck/data/events.min.json");
 
@@ -46,7 +46,7 @@ async function main()
     topBar.layoutHorizontally();
 
     var title = topBar.addText("Pokémon GO Events");
-    title.textColor=new Color("#fff");
+    title.textColor = textMainColor;
 
     if (size == "small")
     {
