@@ -18,21 +18,64 @@ async function main()
         throw new Error("Unsupported widget size.")
     }
 
-    var options = {};
+    var options = {
+        category: "upcoming",
+        theme: "system",
+        eventWhitelist: [],
+        eventBlacklist: [],
+        specificEventBlacklist: []
+    };
     try
     {
-        var split = rawInput.toString().split("|")
+        var split = rawInput.toString().split("|");
 
         options.category = split[0];
+
+        if (split.length >= 2)
+        {
+            options.theme = split[1];
+        }
+        if (split.length >= 3)
+        {
+            if (split[2] == "")
+                options.eventWhitelist = [];
+            else
+                options.eventWhitelist = split[2].replace(" ", "").split(",");
+        }
+        if (split.length >= 4)
+        {
+            if (split[3] == "")
+                options.eventBlacklist = [];
+            else
+                options.eventBlacklist = split[3].replace(" ", "").split(",");
+        }
+        if (split.length >= 5)
+        {
+            if (split[4] == "")
+                options.specificEventBlacklist = [];
+            else
+                options.specificEventBlacklist = split[4].replace(" ", "").split(",");
+        }
     }
-    catch
-    {
-        options.category = "upcoming";
-    }
+    catch {}
 
     var textMainColor = Color.dynamic(new Color("#000"), new Color("#d1d1d1"));
     var textAccentColor = Color.dynamic(new Color("#595959"), new Color("#a6a6a6"));
     widget.backgroundColor = Color.dynamic(new Color("#fff"), new Color("#212121"));
+
+    switch (options.theme)
+    {
+        case "dark":
+            textMainColor = new Color("#d1d1d1");
+            textAccentColor = new Color("#a6a6a6");
+            widget.backgroundColor = new Color("#212121");
+            break;
+        case "light":
+            textMainColor = new Color("#000");
+            textAccentColor = new Color("#595959");
+            widget.backgroundColor = new Color("#fff");
+            break;
+    }
 
     var req = new Request("https://raw.githubusercontent.com/bigfoott/ScrapedDuck/data/events.min.json");
 
@@ -82,12 +125,37 @@ async function main()
         maxEvents = 8;
     }
 
+    for (var i = 0; i < allEvents.length; i++)
+    {
+        allEvents[i].start = Date.parse(allEvents[i].start);
+        allEvents[i].end = Date.parse(allEvents[i].end);
+    }
+
+    if (options.category == "current")
+    {
+        allEvents.sort((a, b) => a.end - b.end);
+    }
+    else //upcoming
+    {
+        allEvents.sort((a, b) => a.start - b.start);
+    }
 
     for (var i = 0; added < maxEvents && i < allEvents.length; i++)
     {
         let e = allEvents[i];
-        e.start = Date.parse(e.start);
-        e.end = Date.parse(e.end);
+
+        if (options.eventWhitelist.length > 0 && !options.eventWhitelist.includes(e.eventType))
+        {
+            continue;
+        }
+        else if (options.eventBlacklist.length > 0 && options.eventBlacklist.includes(e.eventType))
+        {
+            continue;
+        }
+        if (options.specificEventBlacklist.length > 0 && options.specificEventBlacklist.includes(e.eventID))
+        {
+            continue;
+        }
 
         let formattedTime = "";
         let prefix = "";
@@ -185,6 +253,28 @@ async function main()
             name.font = Font.systemFont(11);
 
             if (added < maxEvents) events.addSpacer(5);
+        }
+    }
+
+    if (added == 0)
+    {
+        if (size == "small")
+        {
+            let noEvent = events.addText(`No ${options.category} events.`);
+            noEvent.textColor = textMainColor;
+            noEvent.font = Font.systemFont(8);
+        }
+        else if (size == "medium")
+        {
+            let noEvent = events.addText(`No ${options.category} events.`);
+            noEvent.textColor = textMainColor;
+            noEvent.font = Font.systemFont(10);
+        }
+        else // large
+        {
+            let noEvent = events.addText(`No ${options.category} events.`);
+            noEvent.textColor = textMainColor;
+            noEvent.font = Font.systemFont(11);
         }
     }
 
