@@ -24,27 +24,27 @@ Due to limitations of Scriptable's parameter field, I've created [a separate scr
 
 To use, run the config script within Scriptable itself by tapping on it. You will then be prompted with the following questions:
 
-**1. What type of events should be displayed?**
+### **1. What type of events should be displayed?**
 
 - Current Events / Upcoming Events
 
 *If you'd like to see both current and upcoming events, you will need to add multiple widgets. Optionally, you can place them in a widget stack, making it easy to swipe between current and upcoming.*
 
-**2. What stype of widget do you want?**
+### **2. What stype of widget do you want?**
 - System Theme / Dark Theme / Light Theme
 
-**3. Do you want to whitelist any specific event types?**
+### **3. Do you want to whitelist any specific event types?**
 - Yes / No
 
 *If you want to only see specific event types in this widget, select yes. You will then be prompted to list event types into a text field. For event types, see [Event Types](#event-types) below.*
 
 
-**4. Do you want to blacklist specific event types?**
+### **4. Do you want to blacklist specific event types?**
 - Yes / No
 
 *If you want to never see specific event types in this widget, select yes. You will then be prompted to list event types into a text field. For event types, see [Event Types](#event-types) below.*
 
-**5. Do you want to blacklist specific events?**
+### **5. Do you want to blacklist specific events?**
 - Yes / No
 
 *If there are specific events that you never want to see in this widget (Ex: an event that lasts the entire season), select yes. You will then be prompted to list event **IDs** into a text field. Event IDs are the last section of the URL of the event's page.*
@@ -54,7 +54,7 @@ Example:
 - `ID: season-of-alola`
 
 
-You are then given a string that you can copy and paste into the parameter field on the widget itself.
+### You are then given a string that you can copy and paste into the parameter field on the widget itself.
 
 ## Without Script
 
