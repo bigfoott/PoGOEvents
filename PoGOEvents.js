@@ -88,27 +88,31 @@ async function main()
     var topBar = widget.addStack();
     topBar.layoutHorizontally();
 
-    var title = topBar.addText("Pokémon GO Events");
-    title.textColor = textMainColor;
+    var title = null;
+    var catText = options.category.charAt(0).toUpperCase() + options.category.substr(1);
 
     if (size == "small")
     {
+        title = topBar.addText("Pokémon GO Events")
         title.font = Font.boldSystemFont(10);
 
         widget.addSpacer(5);
     }
     else if (size == "medium")
     {
+        title = topBar.addText(catText + " Pokémon GO Events")
         title.font = Font.boldSystemFont(12);
 
         widget.addSpacer(5);
     }
     else // large
     {
+        title = topBar.addText(catText + " Pokémon GO Events")
         title.font = Font.boldSystemFont(14);
 
         widget.addSpacer(6);
     }
+    title.textColor = textMainColor;
 
     var events = widget.addStack();
     events.layoutVertically();
