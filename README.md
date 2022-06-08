@@ -30,7 +30,7 @@ To use, run the config script within Scriptable itself by tapping on it. You wil
 
 *If you'd like to see both current and upcoming events, you will need to add multiple widgets. Optionally, you can place them in a widget stack, making it easy to swipe between current and upcoming.*
 
-### **2. What stype of widget do you want?**
+### **2. What style of widget do you want?**
 - System Theme / Dark Theme / Light Theme
 
 ### **3. Do you want to whitelist any specific event types?**
