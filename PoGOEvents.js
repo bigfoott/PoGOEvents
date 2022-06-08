@@ -29,7 +29,7 @@ async function main()
     {
         var split = rawInput.toString().split("|");
 
-        options.category = split[0];
+        options.category = split[0].toLowerCase();
 
         if (split.length >= 2)
         {
