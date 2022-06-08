@@ -14,6 +14,8 @@ All event data is gathered from from [ScrapedDuck](https://github.com/bigfoott/S
 
 3. Add a Scriptable widget to your home screen (Small, Medium, and Large widgets are supported). Then edit the widget and select the newly created script in the script field.
 
+- *NOTE: If you've recently installed Scriptable, you may need to restart your device in order for the widgets to show up in the widget picker!*
+
 4. To customize your widget, see [Customization](#customization).
 
 # Customization
