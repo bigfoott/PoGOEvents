@@ -9,8 +9,8 @@ async function main()
     var rawInput = args.widgetParameter;
     var size = config.widgetFamily;
 
-    if (size == "null")
-    {
+    if (size == undefined)
+    {        
         throw new Error("This script must be run in a widget.")
     }
     else if (size == "extraLarge")
@@ -78,7 +78,7 @@ async function main()
     }
 
     var req = new Request("https://raw.githubusercontent.com/bigfoott/ScrapedDuck/data/events.min.json");
-
+  
     var allEvents = null;
     try { 
         allEvents = await req.loadJSON();
