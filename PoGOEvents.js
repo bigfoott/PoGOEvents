@@ -193,6 +193,20 @@ async function main()
 
         added++;
 
+        var eventName = e.name;
+
+        if (size != "small")
+        {
+            if (e.eventType == "pokemon-spotlight-hour")
+            {
+                eventName = `${e.extraData.spotlight.name} Spotlight (${e.extraData.spotlight.bonus})`;
+            }
+            else if (e.eventType == "research-breakthrough")
+            {
+                eventName = e.name.replace(" Research", "") + ` (${e.extraData.breakthrough.name})`;
+            }
+        }
+        
         if (size == "small")
         {
             let event = events.addStack();
@@ -204,7 +218,7 @@ async function main()
             dot.textColor = eventColor[e.eventType];
             dot.font = Font.systemFont(8);
 
-            let name = top.addText(e.name)
+            let name = top.addText(eventName)
             name.textColor = textMainColor;
             name.font = Font.boldSystemFont(8);
             
@@ -223,7 +237,7 @@ async function main()
             dot.textColor = eventColor[e.eventType];
             dot.font = Font.systemFont(10);
 
-            let name = event.addText(e.name)
+            let name = event.addText(eventName)
             name.textColor = textMainColor;
             name.font = Font.systemFont(10);
 
@@ -252,7 +266,7 @@ async function main()
             time.textColor = textAccentColor;
             time.font = Font.systemFont(11);
 
-            let name = bottom.addText(e.name)
+            let name = bottom.addText(eventName)
             name.textColor = textMainColor;
             name.font = Font.systemFont(11);
 
