@@ -6,6 +6,8 @@ PoGOEvents is a [Scriptable](https://scriptable.app/) widget that displays curre
 
 All event data is gathered from from [ScrapedDuck](https://github.com/bigfoott/ScrapedDuck), which scrapes [LeekDuck.com](https://leekduck.com) periodically.
 
+To follow development progress for this widget, check out [the Trello board for PoGOEvents/ScrapedDuck](https://trello.com/b/32UjZbdu/pogoevents-scrapedduck).
+
 # Installation
 
 1. Install [Scriptable](https://apps.apple.com/us/app/scriptable/id1405459188?uo=4) from the app store.
