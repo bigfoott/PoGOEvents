@@ -361,5 +361,6 @@ eventColor["raid-weekend"] = new Color("#6f1e51");
 eventColor["potential-ultra-unlock"] = new Color("#2c3e50");
 eventColor["location-specific"] = new Color("#284b92");
 eventColor["season"] = new Color("#38ada9");
+eventColor["elite-raids"] = new Color("#a21416");
 
 main();
